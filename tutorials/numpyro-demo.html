@@ -237,10 +237,10 @@
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
     <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mi">57</span><span class="p">),</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">68</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
     <span class="p">)</span>
-<span class="p">)</span>  <span class="c1"># The input coordinates must be sorted</span>
+<span class="p">)</span>
 <span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">(</span>
     <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
@@ -248,7 +248,7 @@
     <span class="o">+</span> <span class="n">yerr</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 <span class="p">)</span>
 
-<span class="n">true_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">true_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">true_y</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">true_t</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">true_t</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">true_t</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">true_t</span><span class="p">,</span> <span class="n">true_y</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
@@ -267,13 +267,11 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpyro</span>
-<span class="n">numpyro</span><span class="o">.</span><span class="n">set_host_device_count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">jax.config</span> <span class="kn">import</span> <span class="n">config</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jax.config</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="kn">import</span> <span class="nn">numpyro</span>
 <span class="kn">import</span> <span class="nn">numpyro.distributions</span> <span class="k">as</span> <span class="nn">dist</span>
 <span class="kn">from</span> <span class="nn">numpyro.infer</span> <span class="kn">import</span> <span class="n">MCMC</span><span class="p">,</span> <span class="n">NUTS</span>
 
@@ -322,8 +320,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8min 58s, sys: 3min 12s, total: 12min 10s
-Wall time: 6min 16s
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.1/x64/lib/python3.9/site-packages/numpyro/infer/mcmc.py:479: UserWarning: There are not enough devices to run parallel chains: expected 2 but got 1. Chains will be drawn sequentially. If you are running MCMC in CPU, consider to use `numpyro.set_host_device_count(2)` at the beginning of your program.
+  warnings.warn(&#39;There are not enough devices to run parallel chains: expected {} but got {}.&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 4s, sys: 12.8 s, total: 1min 17s
+Wall time: 49.6 s
 </pre></div>
 </div>
 </div>
@@ -390,100 +392,100 @@ Wall time: 6min 16s
   <tbody>
     <tr>
       <th>jitter</th>
-      <td>0.003</td>
-      <td>0.002</td>
+      <td>0.005</td>
+      <td>0.005</td>
       <td>0.000</td>
-      <td>0.007</td>
+      <td>0.014</td>
       <td>0.000</td>
       <td>0.000</td>
-      <td>2089.0</td>
-      <td>2089.0</td>
-      <td>1263.0</td>
-      <td>707.0</td>
+      <td>2541.0</td>
+      <td>2316.0</td>
+      <td>1480.0</td>
+      <td>889.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.078</td>
-      <td>1.579</td>
-      <td>-2.790</td>
-      <td>3.420</td>
-      <td>0.051</td>
-      <td>0.043</td>
-      <td>964.0</td>
-      <td>665.0</td>
-      <td>1046.0</td>
-      <td>711.0</td>
+      <td>0.074</td>
+      <td>1.531</td>
+      <td>-2.922</td>
+      <td>2.883</td>
+      <td>0.063</td>
+      <td>0.060</td>
+      <td>582.0</td>
+      <td>329.0</td>
+      <td>780.0</td>
+      <td>473.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>rho1</th>
-      <td>2.183</td>
-      <td>0.578</td>
-      <td>1.797</td>
-      <td>2.616</td>
-      <td>0.048</td>
-      <td>0.034</td>
-      <td>148.0</td>
-      <td>148.0</td>
-      <td>410.0</td>
-      <td>186.0</td>
+      <td>2.142</td>
+      <td>0.261</td>
+      <td>1.806</td>
+      <td>2.554</td>
+      <td>0.013</td>
+      <td>0.009</td>
+      <td>419.0</td>
+      <td>414.0</td>
+      <td>693.0</td>
+      <td>446.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>rho2</th>
-      <td>7.733</td>
-      <td>3.063</td>
-      <td>2.414</td>
-      <td>13.400</td>
-      <td>0.080</td>
-      <td>0.056</td>
-      <td>1475.0</td>
-      <td>1475.0</td>
-      <td>1335.0</td>
-      <td>1168.0</td>
+      <td>7.664</td>
+      <td>3.126</td>
+      <td>2.169</td>
+      <td>13.294</td>
+      <td>0.078</td>
+      <td>0.055</td>
+      <td>1604.0</td>
+      <td>1604.0</td>
+      <td>1437.0</td>
+      <td>1267.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>sigma1</th>
-      <td>0.964</td>
-      <td>0.387</td>
-      <td>0.427</td>
-      <td>1.627</td>
+      <td>0.986</td>
+      <td>0.465</td>
+      <td>0.434</td>
+      <td>1.736</td>
+      <td>0.017</td>
       <td>0.013</td>
-      <td>0.010</td>
-      <td>926.0</td>
-      <td>831.0</td>
-      <td>1357.0</td>
-      <td>831.0</td>
+      <td>740.0</td>
+      <td>631.0</td>
+      <td>1423.0</td>
+      <td>777.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>sigma2</th>
-      <td>1.925</td>
-      <td>1.051</td>
-      <td>0.510</td>
-      <td>3.902</td>
-      <td>0.033</td>
-      <td>0.023</td>
-      <td>1007.0</td>
-      <td>1007.0</td>
-      <td>1026.0</td>
-      <td>1390.0</td>
+      <td>1.742</td>
+      <td>0.977</td>
+      <td>0.435</td>
+      <td>3.461</td>
+      <td>0.038</td>
+      <td>0.030</td>
+      <td>648.0</td>
+      <td>543.0</td>
+      <td>799.0</td>
+      <td>893.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>tau</th>
-      <td>2.292</td>
-      <td>0.790</td>
-      <td>0.727</td>
-      <td>3.602</td>
-      <td>0.033</td>
-      <td>0.023</td>
-      <td>573.0</td>
-      <td>573.0</td>
-      <td>452.0</td>
-      <td>206.0</td>
+      <td>2.500</td>
+      <td>1.030</td>
+      <td>0.946</td>
+      <td>4.492</td>
+      <td>0.038</td>
+      <td>0.027</td>
+      <td>730.0</td>
+      <td>730.0</td>
+      <td>661.0</td>
+      <td>678.0</td>
       <td>1.0</td>
     </tr>
   </tbody>
